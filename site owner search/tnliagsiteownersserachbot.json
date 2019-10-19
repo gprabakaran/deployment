@@ -122,14 +122,14 @@
     "gitRepoUrl": {
       "type": "string",
       "metadata": {
-        "description": "The URL to the GitHub repository to deploy."
+        "description": "The URL to the repository to deploy."
       },
-      "defaultValue": "https://github.com/OfficeDev/microsoft-teams-list-search-app.git"
+      "defaultValue": ""
     },
     "gitBranch": {
       "type": "string",
       "metadata": {
-        "description": "The branch of the GitHub repository to deploy."
+        "description": "The branch of the repository to deploy."
       },
       "defaultValue": "master"
     }
