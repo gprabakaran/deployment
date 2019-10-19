@@ -9,7 +9,7 @@
         "description": "The base name to use for the resources that will be provisioned."
       }
     },
-    "messagingExtensionClientId": {
+    "botClientId": {
       "type": "string",
       "minLength": 36,
       "maxLength": 36,
@@ -17,7 +17,7 @@
         "description": "The client ID of the messaging extension Azure AD app, e.g., 123e4567-e89b-12d3-a456-426655440000."
       }
     },
-    "messagingExtensionClientSecret": {
+    "botClientSecret": {
       "type": "string",
       "minLength": 1,
       "metadata": {
@@ -140,8 +140,8 @@
     "messageExtAppDomain": "[concat(variables('messageExtAppName'), '.azurewebsites.net')]",
     "messageExtAppUrl": "[concat('https://', variables('messageExtAppDomain'))]",
     "messageExtLogicAppName": "[parameters('baseResourceName')]",
-    "graphAppClientId": "[parameters('messagingExtensionClientId')]",
-    "graphAppClientSecret": "[parameters('messagingExtensionClientSecret')]",
+    "graphAppClientId": "[parameters('botClientId')]",
+    "graphAppClientSecret": "[parameters('botClientSecret')]",
     "hostingPlanName": "[parameters('baseResourceName')]",
     "storageAccountName": "[uniquestring(concat(resourceGroup().id, parameters('baseResourceName')))]",
     "messageExtAppInsightsName": "[parameters('baseResourceName')]",
@@ -224,7 +224,7 @@
             },
             {
               "name": "MicrosoftAppId",
-              "value": "[parameters('messagingExtensionClientId')]"
+              "value": "[parameters('botClientId')]"
             },
             {
               "name": "GraphAppClientId",
@@ -345,7 +345,7 @@
       "kind": "sdk",
       "properties": {
         "displayName": "[variables('botName')]",
-        "msaAppId": "[parameters('messagingExtensionClientId')]",
+        "msaAppId": "[parameters('botClientId')]",
         "endpoint": "[concat(variables('messageExtAppUrl'), '/api/messages')]",
         "developerAppInsightKey": "[reference(resourceId('Microsoft.Insights/components', variables('messageExtAppInsightsName')), '2015-05-01').InstrumentationKey]"
       },
